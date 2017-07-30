@@ -45,5 +45,4 @@ IF EXIST "%ieset_target%" (
 ) ELSE (
     bitsadmin /transfer "ieset" /download /priority normal "%ieset_source%" "%ieset_target%"
 )
-
 %ieset_target%
