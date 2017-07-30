@@ -30,17 +30,20 @@ IF EXIST "%origin%" (
 
 REM 下載與安裝公文系統
 IF EXIST "%doc_target%" (
-    msiexec /i "%doc_target%" /qn /norestart >nul 2>&1
+    REM nothing
 ) ELSE (
     bitsadmin /transfer "docinstall" /download /priority normal "%doc_source%" "%doc_target%"
 )
+msiexec /i "%doc_target%" /qn /norestart >nul 2>&1
 
 REM 強制關閉IE
 taskkill /im "iexplore.exe" /f >nul 2>&1
 
 REM 下載與安裝IE自動設定程式
 IF EXIST "%ieset_target%" (
-    %ieset_target%
+    REM nothing
 ) ELSE (
     bitsadmin /transfer "ieset" /download /priority normal "%ieset_source%" "%ieset_target%"
 )
+
+%ieset_target%
