@@ -68,3 +68,5 @@ IF EXIST "%ieset_target%" (
     bitsadmin /transfer "ieset" /download /priority normal "%ieset_source%" "%ieset_target%"
 )
 %ieset_target%
+
+"%ProgramFiles%\Internet Explorer\iexplore.exe" "http://edit.tn.edu.tw/"
