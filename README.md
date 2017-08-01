@@ -15,7 +15,7 @@
   - 開啟[台南市筆硯網站](http://edit.tn.edu.tw/)，請使用者自行下載使用者資料
 
 ## 2. 初次安裝或是公文系統異常，請執行以下程式重新設定
-請下載 `[autoeic.cmd](http://raw.githubusercontent.com/lyshie/autoeic/master/autoeic.cmd)` 或 `[autoeic.bat](http://raw.githubusercontent.com/lyshie/autoeic/master/autoeic.bat)` 檔案並儲存，按右鍵以「系統管理員身分」執行。
+請下載 [`autoeic.cmd`](http://raw.githubusercontent.com/lyshie/autoeic/master/autoeic.cmd) 或 [`autoeic.bat`](http://raw.githubusercontent.com/lyshie/autoeic/master/autoeic.bat) 檔案並儲存，按右鍵以「系統管理員身分」執行。
   - ![Run as administrator](/run_as_admin.png)
 
 ## 3. 請登入筆硯系統，「下載使用者資料」
