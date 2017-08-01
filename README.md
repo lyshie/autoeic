@@ -22,3 +22,7 @@
 此步驟除下載使用者資料，也重新下載通訊錄，解決通訊錄更新異常造成程式沒有回應的問題。
   - ![Login](/by.png)
   - ![Download user data](/download.png)
+
+## 4. 相關資訊
+  - 「公文系統」與「IE 自動設定程式」可至台南市公文管理系統與筆硯平台下載取得
+  - `autoeic.cmd` 程式作者為 HSIEH, Li-Yi
