@@ -76,6 +76,7 @@ IF EXIST "%ieset_target%" (
 )
 %ieset_target%
 
+REM 處理ADODB.CONNECTION版本比較的問題
 IF EXIST "%fart_exec%" (
     REM nothing
 ) ELSE (
