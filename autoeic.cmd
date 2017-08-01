@@ -6,8 +6,9 @@ SET "doc_target=%userprofile%\Downloads\docNinstall.msi"
 SET "ieset_source=http://raw.githubusercontent.com/lyshie/autoeic/master/IE_SET.EXE"
 SET "ieset_target=%userprofile%\Downloads\IE_SET.exe"
 
-REM SET "origin=C:\eic"
-REM FOR /F %%A IN ('WMIC OS GET LocalDateTime ^| FINDSTR \.') DO @SET B=%%A
+SET "adbook=C:\eic\adbook"
+FOR /F %%A IN ('WMIC OS GET LocalDateTime ^| FINDSTR \.') DO @SET B=%%A
+SET "datetime=%B:~0,8%-%B:~8,6%"
 REM SET "backup=eic_%B:~0,8%-%B:~8,6%"
 
 REM 關閉通訊錄
@@ -19,12 +20,16 @@ wmic product where name="文書編輯-公文製作系統" call uninstall >nul 2>&1
 "%ProgramFiles%\公文管理系統：IE環境設定\uninstall.exe" /U:"%ProgramFiles%\公文管理系統：IE環境設定\Uninstall\uninstall.xml"
 
 REM 刪除未自動移除的檔案
-del "%windir%\System32\eicdocn.dll" >nul 2>&1
+del "%windir%\System32\eicdocn.dll"   >nul 2>&1
 del "%windir%\System32\eicsecure.dll" >nul 2>&1
-del "%windir%\System32\eicsign.dll" >nul 2>&1
-del "%windir%\SysWOW64\eicdocn.dll" >nul 2>&1
+del "%windir%\System32\eicsign.dll"   >nul 2>&1
+del "%windir%\SysWOW64\eicdocn.dll"   >nul 2>&1
 del "%windir%\SysWOW64\eicsecure.dll" >nul 2>&1
-del "%windir%\SysWOW64\eicsign.dll" >nul 2>&1
+del "%windir%\SysWOW64\eicsign.dll"   >nul 2>&1
+
+REM 處理通訊錄異常問題
+ren "%adbook%\tncg"  "tncg_%datetime%"  >nul 2>&1
+ren "%adbook%\tncg2" "tncg2_%datetime%" >nul 2>&1
 
 REM 備份原本的資料夾
 REM IF EXIST "%origin%" (
