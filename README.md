@@ -12,6 +12,7 @@
   - 將 `tn.edu.tw` 網域加入相容性檢視
   - 將 `tn.edu.tw` 網域加入到快顯封鎖的例外網站
   - 下載與安裝 [IE 自動設定程式](http://raw.githubusercontent.com/lyshie/autoeic/master/IE_SET.EXE) (取自台南市公文系統網站)
+ - 下載使用 [FART](http://fart-it.sourceforge.net/) 工具取代修正 `main.js` 程式碼 ([參考網站](http://klcg.cloudop.tw/KLGService/ServicePlatForm.aspx))<pre><code>adoConnect.Version < "2.5" 改為 parseFloat(adoConnect.Version) < 2.5</code></pre>
   - 開啟[台南市筆硯網站](http://edit.tn.edu.tw/)，請使用者自行下載使用者資料
 
 ## 2. 初次安裝或是公文系統異常，請執行以下程式重新設定
@@ -25,3 +26,4 @@
 
 ## 4. 相關資訊
   - 「公文系統」與「IE 自動設定程式」可至台南市公文管理系統與筆硯平台下載取得
+  - 筆硯已有[新版程式](http://klcg.cloudop.tw/KLGService/ServicePlatForm.aspx)可供下載，但非台南市公文管理系統所提供
