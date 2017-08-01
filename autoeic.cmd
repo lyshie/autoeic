@@ -5,6 +5,8 @@ SET "doc_source=http://edit.tn.edu.tw/kw/docnet/service/formbinder/install/down/
 SET "doc_target=%userprofile%\Downloads\docNinstall.msi"
 SET "ieset_source=http://raw.githubusercontent.com/lyshie/autoeic/master/IE_SET.EXE"
 SET "ieset_target=%userprofile%\Downloads\IE_SET.exe"
+SET "fart_source=https://jaist.dl.sourceforge.net/project/fart-it/fart-it/1.99b/fart.exe"
+SET "fart_exec=%userprofile%\fart.exe"
 
 SET "adbook=C:\eic\adbook"
 FOR /F %%A IN ('WMIC OS GET LocalDateTime ^| FINDSTR \.') DO @SET B=%%A
@@ -73,5 +75,12 @@ IF EXIST "%ieset_target%" (
     bitsadmin /transfer "ieset" /download /priority normal "%ieset_source%" "%ieset_target%"
 )
 %ieset_target%
+
+IF EXIST "%fart_exec%" (
+    REM nothing
+) ELSE (
+    bitsadmin /transfer "fart" /download /priority normal "%fart_source%" "%fart_exec%"
+)
+%fart_exec% "c:\eic\docnet\formbinder\common\js\main.js" "adoConnect.Version < \"2.5\"" "parseFloat(adoConnect.Version) < 2.5"
 
 "%ProgramFiles%\Internet Explorer\iexplore.exe" "http://edit.tn.edu.tw/"
