@@ -3,10 +3,15 @@
 
 SET "doc_source=http://edit.tn.edu.tw/kw/docnet/service/formbinder/install/down/docNinstall.msi"
 SET "doc_target=%userprofile%\Downloads\docNinstall.msi"
-SET "ieset_source=http://raw.githubusercontent.com/lyshie/autoeic/master/IE_SET.EXE"
+SET "ieset_source=https://gitcdn.xyz/repo/lyshie/autoeic/master/IE_SET.EXE"
 SET "ieset_target=%userprofile%\Downloads\IE_SET.exe"
 SET "fart_source=https://jaist.dl.sourceforge.net/project/fart-it/fart-it/1.99b/fart.exe"
 SET "fart_exec=%userprofile%\Downloads\fart.exe"
+SET "unzip_source=http://www2.cs.uidaho.edu/~jeffery/win32/unzip.exe"
+SET "unzip_exec=%userprofile%\Downloads\unzip.exe"
+SET "adbook_source=http://edit.tn.edu.tw/kw/docnet/service/module/docn/adbook/tncg.zip"
+SET "adbook_target=%userprofile%\Downloads\tncg.zip"
+SET "wget=%~dp0\wget.exe"
 
 SET "adbook=C:\eic\adbook"
 FOR /F %%A IN ('WMIC OS GET LocalDateTime ^| FINDSTR \.') DO @SET B=%%A
@@ -48,6 +53,11 @@ echo 下載與安裝公文系統
 IF EXIST "%doc_target%" (
     REM nothing
 ) ELSE (
+   "%wget%" --no-check-certificate -q -O "%doc_target%" "%doc_source%" >nul 2>&1
+)
+IF EXIST "%doc_target%" (
+    REM nothing
+) ELSE (
     bitsadmin /transfer "docinstall" /download /priority normal "%doc_source%" "%doc_target%"
 )
 msiexec /i "%doc_target%" /qn /norestart >nul 2>&1
@@ -56,7 +66,6 @@ echo 強制關閉使用中的 IE 瀏覽器
 taskkill /im "iexplore.exe" /f >nul 2>&1
 
 
-SET "policy=%userprofile%\Downloads\winopenTool1015.hta"
 SET "zone_map=HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\"
 SET "emulation=HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\BrowserEmulation\ClearableListData"
 SET "newwindows=HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\New Windows\Allow"
@@ -76,12 +85,48 @@ echo 下載與安裝 IE 自動設定程式 (取自台南市公文系統網站)
 IF EXIST "%ieset_target%" (
     REM nothing
 ) ELSE (
+    "%wget%" --no-check-certificate -q -O "%ieset_target%" "%ieset_source%" >nul 2>nul
+)
+IF EXIST "%ieset_target%" (
+    REM nothing
+) ELSE (
     bitsadmin /transfer "ieset" /download /priority normal "%ieset_source%" "%ieset_target%"
 )
 %ieset_target%
 
+echo 下載預設通訊錄
+IF EXIST "%adbook_target%" (
+    REM nothing
+) ELSE (
+    "%wget%" --no-check-certificate -q -O "%adbook_target%" "%adbook_source%" >nul 2>nul
+)
+IF EXIST "%adbook_target%" (
+    REM nothing
+) ELSE (
+    bitsadmin /transfer "ieset" /download /priority normal "%adbook_source%" "%adbook_target%"
+)
+
+echo 下載 Unzip
+IF EXIST "%unzip_exec%" (
+    REM nothing
+) ELSE (
+    "%wget%" --no-check-certificate -q -O "%unzip_exec%" "%unzip_source%" >nul 2>nul
+)
+IF EXIST "%unzip_exec%" (
+    REM nothing
+) ELSE (
+    bitsadmin /transfer "ieset" /download /priority normal "%unzip_source%" "%unzip_exec%"
+)
+%unzip_exec% "%adbook_target%" -d "%adbook%"
+
+
 echo 下載使用 FART 工具取代修正 main.js 程式碼
 echo 處理 ADODB.CONNECTION 版本比較的問題
+IF EXIST "%fart_exec%" (
+    REM nothing
+) ELSE (
+    "%wget%" --no-check-certificate -q -O "%fart_exec%" "%fart_source%" >nul 2>nul
+)
 IF EXIST "%fart_exec%" (
     REM nothing
 ) ELSE (
