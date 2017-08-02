@@ -35,7 +35,8 @@
 ## 5. 相關資訊
 - 「公文系統」與「IE 自動設定程式」可至台南市公文管理系統與筆硯平台下載取得
 - 筆硯已有[新版程式](http://klcg.cloudop.tw/KLGService/ServicePlatForm.aspx)可供下載，但非台南市公文管理系統所提供
-- 使用第三方程式，如 `wget.exe`、`unzip.exe` 與 `fart.exe`。
+- 使用第三方程式，如 `wget.exe`、`unzip.exe` 與 `fart.exe`
+- GitHub 檔案改以 GitCDN 提供，避免流量限制與 Content-type 問題
 
 ## 6. 作者
 - HSIEH, Li-Yi
