@@ -6,7 +6,7 @@ SET "doc_target=%userprofile%\Downloads\docNinstall.msi"
 SET "ieset_source=http://raw.githubusercontent.com/lyshie/autoeic/master/IE_SET.EXE"
 SET "ieset_target=%userprofile%\Downloads\IE_SET.exe"
 SET "fart_source=https://jaist.dl.sourceforge.net/project/fart-it/fart-it/1.99b/fart.exe"
-SET "fart_exec=%userprofile%\fart.exe"
+SET "fart_exec=%userprofile%\Downloads\fart.exe"
 
 SET "adbook=C:\eic\adbook"
 FOR /F %%A IN ('WMIC OS GET LocalDateTime ^| FINDSTR \.') DO @SET B=%%A
