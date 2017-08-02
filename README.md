@@ -39,4 +39,4 @@
 - GitHub 檔案改以 [GitCDN](https://gitcdn.xyz/) 提供，避免流量限制與 Content-type 問題
 
 ## 6. 作者
-- HSIEH, Li-Yi 進學國小資訊組
+- HSIEH, Li-Yi (@進學國小資訊組)
