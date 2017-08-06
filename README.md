@@ -18,7 +18,7 @@
 - 將 `{edit, odm}.tn.edu.tw` 網址加入信任的網站
 - 將 `tn.edu.tw` 網域加入相容性檢視
 - 將 `tn.edu.tw` 網域加入到快顯封鎖的例外網站
-- 下載與安裝 [IE 自動設定程式](http://raw.githubusercontent.com/lyshie/autoeic/master/IE_SET.EXE) (取自台南市公文系統網站)
+- 下載與安裝 [IE 自動設定程式](http://odm.tn.edu.tw/SODFILE/TNSCH0001/DOWNLOAD/IE_SET.EXE) (取自台南市公文系統網站)
 - 下載預設通訊錄與 [`Unzip`](http://www2.cs.uidaho.edu/~jeffery/win32/unzip.exe) 程式，安裝預設的通訊錄
 - 下載使用 [FART](http://fart-it.sourceforge.net/) 工具取代修正 `main.js` 程式碼 ([參考網站](http://klcg.cloudop.tw/KLGService/ServicePlatForm.aspx))
   <pre><code>adoConnect.Version < "2.5" 改為 parseFloat(adoConnect.Version) < 2.5</code></pre>
@@ -38,6 +38,7 @@
 - 筆硯已有[新版程式](http://klcg.cloudop.tw/KLGService/ServicePlatForm.aspx)可供下載，但非台南市公文管理系統所提供
 - 使用第三方程式，如 `wget.exe`、`unzip.exe` 與 `fart.exe`
 - GitHub 檔案改以 [GitCDN](https://gitcdn.xyz/) 提供，避免流量限制與 Content-type 問題
+- 自動化安裝程式使用 NSIS ([Nullsoft Scriptable Install System](http://nsis.sourceforge.net/Main_Page)) 製作
 
 ## 6. 作者
 - HSIEH, Li-Yi (@進學國小資訊組)
