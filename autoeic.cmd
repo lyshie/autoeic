@@ -3,7 +3,7 @@
 
 SET "doc_source=http://edit.tn.edu.tw/kw/docnet/service/formbinder/install/down/docNinstall.msi"
 SET "doc_target=%userprofile%\Downloads\docNinstall.msi"
-SET "ieset_source=https://gitcdn.xyz/repo/lyshie/autoeic/master/IE_SET.EXE"
+SET "ieset_source=http://odm.tn.edu.tw/SODFILE/TNSCH0001/DOWNLOAD/IE_SET.EXE"
 SET "ieset_target=%userprofile%\Downloads\IE_SET.exe"
 SET "fart_source=https://jaist.dl.sourceforge.net/project/fart-it/fart-it/1.99b/fart.exe"
 SET "fart_exec=%userprofile%\Downloads\fart.exe"
