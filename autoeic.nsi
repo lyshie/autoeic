@@ -1,4 +1,5 @@
 !include "FileFunc.nsh"
+!include "TextReplace.nsh"
 
 !define ADBOOK     "C:\eic\adbook"
 !define ZONE_MAP   "Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains"
@@ -23,9 +24,18 @@ Section
     nsExec::ExecToLog 'wmic product where name="文書編輯-公文製作系統" call uninstall'
 
     # 移除公文管理系統 IE 環境設定程式
+    IfFileExists "$PROGRAMFILES32\公文管理系統：IE環境設定\Uninstall\uninstall.xml" uninstall_ieset32
+        Goto skip_uninstall_ieset
+    uninstall_ieset32:
     ExecWait '"$PROGRAMFILES32\公文管理系統：IE環境設定\uninstall.exe" /U:"$PROGRAMFILES32\公文管理系統：IE環境設定\Uninstall\uninstall.xml"'
+    
+    IfFileExists "$PROGRAMFILES64\公文管理系統：IE環境設定\Uninstall\uninstall.xml" uninstall_ieset64
+        Goto skip_uninstall_ieset
+    uninstall_ieset64:
     ExecWait '"$PROGRAMFILES64\公文管理系統：IE環境設定\uninstall.exe" /U:"$PROGRAMFILES64\公文管理系統：IE環境設定\Uninstall\uninstall.xml"'
 
+    skip_uninstall_ieset:
+    
     # 刪除未自動移除的檔案 (eic*)
     Delete "$WINDIR\System32\eicdocn.dll"
     Delete "$WINDIR\System32\eicsecure.dll"
@@ -79,12 +89,8 @@ Section
 
     # 修正 main.js 程式碼
     # 處理 ADODB.CONNECTION 版本比較的問題
-    Delete "c:\eic\docnet\formbinder\common\js\main.js.new"
-    Delete "c:\eic\docnet\formbinder\common\js\main.js.old"
-    vpatch::vpatchfile "main.js.pat" "c:\eic\docnet\formbinder\common\js\main.js" "c:\eic\docnet\formbinder\common\js\main.js.new"
-    Rename "c:\eic\docnet\formbinder\common\js\main.js" "c:\eic\docnet\formbinder\common\js\main.js.old"
-    Rename "c:\eic\docnet\formbinder\common\js\main.js.new" "c:\eic\docnet\formbinder\common\js\main.js"
-
+    ${textreplace::ReplaceInFile} "c:\eic\docnet\formbinder\common\js\main.js" "c:\eic\docnet\formbinder\common\js\main.js" 'adoConnect.Version < "2.5"' "parseFloat(adoConnect.Version) < 2.5" "" $0
+    
     # 開啟台南市筆硯網站，請使用者自行下載使用者資料
     MessageBox MB_OK|MB_ICONINFORMATION "記得登入筆硯平台，同意安裝元件，並自行下載「使用者資料」。"
     Exec '"$PROGRAMFILES\Internet Explorer\iexplore.exe" "http://edit.tn.edu.tw/"'
