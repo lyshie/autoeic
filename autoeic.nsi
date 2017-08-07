@@ -28,14 +28,14 @@ Section
         Goto skip_uninstall_ieset
     uninstall_ieset32:
     ExecWait '"$PROGRAMFILES32\公文管理系統：IE環境設定\uninstall.exe" /U:"$PROGRAMFILES32\公文管理系統：IE環境設定\Uninstall\uninstall.xml"'
-    
+
     IfFileExists "$PROGRAMFILES64\公文管理系統：IE環境設定\Uninstall\uninstall.xml" uninstall_ieset64
         Goto skip_uninstall_ieset
     uninstall_ieset64:
     ExecWait '"$PROGRAMFILES64\公文管理系統：IE環境設定\uninstall.exe" /U:"$PROGRAMFILES64\公文管理系統：IE環境設定\Uninstall\uninstall.xml"'
 
     skip_uninstall_ieset:
-    
+
     # 刪除未自動移除的檔案 (eic*)
     Delete "$WINDIR\System32\eicdocn.dll"
     Delete "$WINDIR\System32\eicsecure.dll"
@@ -89,8 +89,9 @@ Section
 
     # 修正 main.js 程式碼
     # 處理 ADODB.CONNECTION 版本比較的問題
+    # http://nsis.sourceforge.net/TextReplace_plugin#Replace_in_file
     ${textreplace::ReplaceInFile} "c:\eic\docnet\formbinder\common\js\main.js" "c:\eic\docnet\formbinder\common\js\main.js" 'adoConnect.Version < "2.5"' "parseFloat(adoConnect.Version) < 2.5" "" $0
-    
+
     # 開啟台南市筆硯網站，請使用者自行下載使用者資料
     MessageBox MB_OK|MB_ICONINFORMATION "記得登入筆硯平台，同意安裝元件，並自行下載「使用者資料」。"
     Exec '"$PROGRAMFILES\Internet Explorer\iexplore.exe" "http://edit.tn.edu.tw/"'
