@@ -103,7 +103,7 @@ IF EXIST "%adbook_target%" (
 IF EXIST "%adbook_target%" (
     REM nothing
 ) ELSE (
-    bitsadmin /transfer "ieset" /download /priority normal "%adbook_source%" "%adbook_target%"
+    bitsadmin /transfer "adbook" /download /priority normal "%adbook_source%" "%adbook_target%"
 )
 
 echo ¤U¸ü Unzip
@@ -115,7 +115,7 @@ IF EXIST "%unzip_exec%" (
 IF EXIST "%unzip_exec%" (
     REM nothing
 ) ELSE (
-    bitsadmin /transfer "ieset" /download /priority normal "%unzip_source%" "%unzip_exec%"
+    bitsadmin /transfer "unzip" /download /priority normal "%unzip_source%" "%unzip_exec%"
 )
 %unzip_exec% "%adbook_target%" -d "%adbook%"
 
