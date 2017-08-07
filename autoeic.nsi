@@ -79,13 +79,15 @@ Section
 
     # 修正 main.js 程式碼
     # 處理 ADODB.CONNECTION 版本比較的問題
+    Delete "c:\eic\docnet\formbinder\common\js\main.js.new"
+    Delete "c:\eic\docnet\formbinder\common\js\main.js.old"
     vpatch::vpatchfile "main.js.pat" "c:\eic\docnet\formbinder\common\js\main.js" "c:\eic\docnet\formbinder\common\js\main.js.new"
-    Delete "c:\eic\docnet\formbinder\common\js\main.js"
+    Rename "c:\eic\docnet\formbinder\common\js\main.js" "c:\eic\docnet\formbinder\common\js\main.js.old"
     Rename "c:\eic\docnet\formbinder\common\js\main.js.new" "c:\eic\docnet\formbinder\common\js\main.js"
 
     # 開啟台南市筆硯網站，請使用者自行下載使用者資料
     MessageBox MB_OK|MB_ICONINFORMATION "記得登入筆硯平台，同意安裝元件，並自行下載「使用者資料」。"
-    ExecWait '"$PROGRAMFILES\Internet Explorer\iexplore.exe" "http://edit.tn.edu.tw/"'
+    Exec '"$PROGRAMFILES\Internet Explorer\iexplore.exe" "http://edit.tn.edu.tw/"'
 
 # default section end
 SectionEnd
