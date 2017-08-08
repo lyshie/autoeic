@@ -39,6 +39,7 @@
 - 使用第三方程式，如 `wget.exe`、`unzip.exe` 與 `fart.exe`
 - GitHub 檔案改以 [GitCDN](https://gitcdn.xyz/) 提供，避免流量限制與 Content-type 問題
 - 自動化安裝程式使用 NSIS ([Nullsoft Scriptable Install System](http://nsis.sourceforge.net/Main_Page)) 製作
+- `autoeic.exe` 檔案掃描結果 [Metadefender](https://www.metadefender.com/#!/results/file/ZTE3MDgwOEIxWmcybXM0d3diQmt6eDI3akV3d1o/regular/info) 與 [VirusTotal](https://www.virustotal.com/zh-tw/file/3e1b2e5fb90bd61ad59fd07c3bb3aa4aca72f391c8dbe39343dac52f5c6fce60/analysis/)
 
 ## 6. 作者
 - HSIEH, Li-Yi (@進學國小資訊組)
