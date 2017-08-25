@@ -22,6 +22,7 @@
 - 下載預設通訊錄與 [`Unzip`](http://www2.cs.uidaho.edu/~jeffery/win32/unzip.exe) 程式，安裝預設的通訊錄
 - 下載使用 [FART](http://fart-it.sourceforge.net/) 工具取代修正 `main.js` 程式碼 ([參考網站](http://klcg.cloudop.tw/KLGService/ServicePlatForm.aspx))
   <pre><code>adoConnect.Version < "2.5" 改為 parseFloat(adoConnect.Version) < 2.5</code></pre>
+- [筆硯編輯系統因應新版自然人憑證設定說明](http://odprj.tainan.gov.tw/UserFiles/20170802150905622/%E7%AD%86%E7%A1%AF%E7%B7%A8%E8%BC%AF%E7%B3%BB%E7%B5%B1%E5%9B%A0%E6%87%89%E6%96%B0%E7%89%88%E8%87%AA%E7%84%B6%E4%BA%BA%E6%86%91%E8%AD%89%E8%A8%AD%E5%AE%9A%E8%AA%AA%E6%98%8E.pdf)
 - 開啟[台南市筆硯網站](http://edit.tn.edu.tw/)，請使用者自行下載使用者資料
 
 ## 3. 初次安裝或是公文系統異常，請執行以下程式重新設定
@@ -39,7 +40,7 @@
 - 使用第三方程式，如 `wget.exe`、`unzip.exe` 與 `fart.exe`
 - GitHub 檔案改以 [GitCDN](https://gitcdn.xyz/) 提供，避免流量限制與 Content-type 問題
 - 自動化安裝程式使用 NSIS ([Nullsoft Scriptable Install System](http://nsis.sourceforge.net/Main_Page)) 製作
-- `autoeic.exe` 檔案掃描結果 [Metadefender](https://www.metadefender.com/#!/results/file/ZTE3MDgwOEIxWmcybXM0d3diQmt6eDI3akV3d1o/regular/info) 與 [VirusTotal](https://www.virustotal.com/zh-tw/file/3e1b2e5fb90bd61ad59fd07c3bb3aa4aca72f391c8dbe39343dac52f5c6fce60/analysis/)
+- `autoeic.exe` 檔案掃描結果 [VirusTotal](https://www.virustotal.com/zh-tw/file/b65c60de549e6b1f932323317f73d3e2bea93809b2a3ee2c52ba5dbaa32863c8/analysis/1503678607/)
 
 ## 6. 作者
 - HSIEH, Li-Yi (@進學國小資訊組)
