@@ -92,6 +92,22 @@ Section
     # http://nsis.sourceforge.net/TextReplace_plugin#Replace_in_file
     ${textreplace::ReplaceInFile} "c:\eic\docnet\formbinder\common\js\main.js" "c:\eic\docnet\formbinder\common\js\main.js" 'adoConnect.Version < "2.5"' "parseFloat(adoConnect.Version) < 2.5" "" $0
 
+	# 修正 106-08-01 新版自然人憑證，更新 HiCOSPKCS11_219.dll
+    IfFileExists "$PROFILE\Downloads\HiCOS_Client.zip" found_hicos
+        NSISdl::download "http://api-hisecurecdn.cdn.hinet.net/HiCOS_Client.zip" "$PROFILE\Downloads\HiCOS_Client.zip"
+    found_hicos:
+    nsisunz::UnzipToLog "$PROFILE\Downloads\HiCOS_Client.zip" "$PROFILE\Downloads"
+	ExecWait '$PROFILE\Downloads\HiCOS_Client.exe /install /passive /quiet /norestart'
+
+	Delete "$WINDIR\System32\HiCOSPKCS11_219.dll.old"
+	Delete "$WINDIR\SysWOW64\HiCOSPKCS11_219.dll.old"
+
+	Rename "$WINDIR\System32\HiCOSPKCS11_219.dll" "$WINDIR\System32\HiCOSPKCS11_219.dll.old"
+	Rename "$WINDIR\SysWOW64\HiCOSPKCS11_219.dll" "$WINDIR\SysWOW64\HiCOSPKCS11_219.dll.old"
+
+	CopyFiles "$WINDIR\System32\HiCOSPKCS11.dll" "$WINDIR\System32\HiCOSPKCS11_219.dll"
+	CopyFiles "$WINDIR\SysWOW64\HiCOSPKCS11.dll" "$WINDIR\SysWOW64\HiCOSPKCS11_219.dll"
+
     # 開啟台南市筆硯網站，請使用者自行下載使用者資料
     MessageBox MB_OK|MB_ICONINFORMATION "記得登入筆硯平台，同意安裝元件，並自行下載「使用者資料」。"
     Exec '"$PROGRAMFILES\Internet Explorer\iexplore.exe" "http://edit.tn.edu.tw/"'
