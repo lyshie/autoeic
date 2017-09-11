@@ -25,6 +25,7 @@
   <pre><code>adoConnect.Version < "2.5" 改為 parseFloat(adoConnect.Version) < 2.5</code></pre>
 - [筆硯編輯系統因應新版自然人憑證設定說明](http://odprj.tainan.gov.tw/UserFiles/20170802150905622/%E7%AD%86%E7%A1%AF%E7%B7%A8%E8%BC%AF%E7%B3%BB%E7%B5%B1%E5%9B%A0%E6%87%89%E6%96%B0%E7%89%88%E8%87%AA%E7%84%B6%E4%BA%BA%E6%86%91%E8%AD%89%E8%A8%AD%E5%AE%9A%E8%AA%AA%E6%98%8E.pdf)
 - 開啟[台南市筆硯網站](http://edit.tn.edu.tw/)，請使用者自行下載使用者資料
+- 開啟桌面捷徑「文書編輯-公文製作」，接受 `*.cab` 檔案下載與安裝
 
 ## 3. 初次安裝或是公文系統異常，請執行以下程式重新設定
 請下載 [`autoeic.cmd`](https://gitcdn.xyz/repo/lyshie/autoeic/master/autoeic.cmd) 或 [`autoeic.bat`](https://gitcdn.xyz/repo/lyshie/autoeic/master/autoeic.bat) 檔案並儲存，按右鍵以「系統管理員身分」執行。
