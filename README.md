@@ -1,10 +1,11 @@
 # 自動安裝台南市公文系統 (autoeic)
 
 ## 1. 如何使用？
-- 建議使用自動安裝程式 [`autoeic.exe`](https://raw.githubusercontent.com/lyshie/autoeic/master/autoeic.exe)
+- 建議使用自動安裝程式 [`autoeic.exe`](https://raw.githubusercontent.com/lyshie/autoeic/master/autoeic.exe) ([如遇防毒軟體警告 False Positives](http://nsis.sourceforge.net/NSIS_False_Positives)，請改以下步驟)
 - 或右鍵另存下載 [`autoeic.cmd`](https://raw.githubusercontent.com/lyshie/autoeic/master/autoeic.cmd)，右鍵以「系統管理員身分」執行
   - 如 `bitsadmin` 無法正常下載，請使用 [`wget.exe`](https://eternallybored.org/misc/wget/current/wget.exe) 程式提供下載 (`wget.exe` 與 `autoeic.cmd` 同目錄)
 - 請登入[筆硯系統](http://edit.tn.edu.tw/)，下載使用者資料
+- 開啟桌面捷徑「文書編輯-公文製作」，接受 `*.cab` 檔案下載與安裝
 - 開啟[台南市公文管理系統](http://odm.tn.edu.tw/)，接受 `*.cab` 檔案下載與安裝
 
 ## 2. 自動化項目的步驟
