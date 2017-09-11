@@ -11,9 +11,14 @@ SET "unzip_source=http://www2.cs.uidaho.edu/~jeffery/win32/unzip.exe"
 SET "unzip_exec=%userprofile%\Downloads\unzip.exe"
 SET "adbook_source=http://edit.tn.edu.tw/kw/docnet/service/module/docn/adbook/tncg.zip"
 SET "adbook_target=%userprofile%\Downloads\tncg.zip"
+SET "hicos_source=http://api-hisecurecdn.cdn.hinet.net/HiCOS_Client.zip"
+SET "hicos_target=%userprofile%\Downloads\HiCOS_Client.zip"
 SET "wget=%~dp0\wget.exe"
 
 SET "adbook=C:\eic\adbook"
+SET "downloads=%userprofile%\Downloads"
+SET "hicos_exec=%userprofile%\Downloads\HiCOS_Client.exe"
+
 FOR /F %%A IN ('WMIC OS GET LocalDateTime ^| FINDSTR \.') DO @SET B=%%A
 SET "datetime=%B:~0,8%-%B:~8,6%"
 REM SET "backup=eic_%B:~0,8%-%B:~8,6%"
@@ -117,7 +122,7 @@ IF EXIST "%unzip_exec%" (
 ) ELSE (
     bitsadmin /transfer "unzip" /download /priority normal "%unzip_source%" "%unzip_exec%"
 )
-%unzip_exec% "%adbook_target%" -d "%adbook%"
+%unzip_exec% -o "%adbook_target%" -d "%adbook%"
 
 
 echo 下載使用 FART 工具取代修正 main.js 程式碼
@@ -134,5 +139,29 @@ IF EXIST "%fart_exec%" (
 )
 %fart_exec% "c:\eic\docnet\formbinder\common\js\main.js" "adoConnect.Version < \"2.5\"" "parseFloat(adoConnect.Version) < 2.5" >nul 2>nul
 
+# 修正 106-08-01 新版自然人憑證，更新 HiCOSPKCS11_219.dll
+IF EXIST "%hicos_target%" (
+    REM nothing
+) ELSE (
+    "%wget%" --no-check-certificate -q -O "%hicos_target%" "%hicos_source%" >nul 2>nul
+)
+IF EXIST "%hicos_target%" (
+    REM nothing
+) ELSE (
+    bitsadmin /transfer "hicos" /download /priority normal "%hicos_source%" "%hicos_target%"
+)
+%unzip_exec% -o "%hicos_target%" -d "%downloads%"
+"%hicos_exec%" /install /passive /quiet /norestart >nul 2>&1
+
+del "%windir%\System32\HiCOSPKCS11_219.dll.old"    >nul 2>&1
+del "%windir%\SysWOW64\HiCOSPKCS11_219.dll.old"    >nul 2>&1
+
+ren "%windir%\System32\HiCOSPKCS11_219.dll" "HiCOSPKCS11_219.dll.old"    >nul 2>&1
+ren "%windir%\SysWOW64\HiCOSPKCS11_219.dll" "HiCOSPKCS11_219.dll.old"    >nul 2>&1
+
+copy /y "%windir%\System32\HiCOSPKCS11.dll" "%windir%\System32\HiCOSPKCS11_219.dll"    >nul 2>&1
+copy /y "%windir%\SysWOW64\HiCOSPKCS11.dll" "%windir%\SysWOW64\HiCOSPKCS11_219.dll"    >nul 2>&1
+
 echo 開啟台南市筆硯網站，請使用者自行下載使用者資料
 "%ProgramFiles%\Internet Explorer\iexplore.exe" "http://edit.tn.edu.tw/"
+"%ProgramFiles%\Internet Explorer\iexplore.exe" "C:\eic\docnet\formbinder\login.htm"
